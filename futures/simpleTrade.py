@@ -1,6 +1,3 @@
-#!/usr/bin/python3.10
-# coding=utf-8
-
 import _thread
 import decimal
 import json
@@ -10,14 +7,14 @@ import traceback
 
 import requests
 
-from binance_f.model.constant import *
-from binance_f.requestclient import RequestClient
 from commonFunction import FunctionClient
-from config import *
+from futures.model.constant import *
+from futures.requestclient import RequestClient
+from .config import settings
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="secondOpen")
 
-PUBLIC_SERVER_IP = "http://" + WEB_ADDRESS + ":8888/"
+PUBLIC_SERVER_IP = "http://" + settings.WEB_ADDRESS + ":8888/"
 
 PRIVATE_IP = FUNCTION_CLIENT.get_private_ip()
 
@@ -33,7 +30,7 @@ ORDER_ID_SYMBOL = "m"
 
 ORDER_ID_INDEX = random.randint(1, 100000)
 
-TRADE_SYMBOL_ARR = []
+# TRADE_SYMBOL_ARR = []
 
 response = requests.request("POST", PUBLIC_SERVER_IP + "get_symbol_index", timeout=3).json()
 
@@ -140,8 +137,8 @@ def getTickData():
                         ONE_MIN_KLINE_OBJ_ARR[a]["dataError"] = False
                     elif (klineMin < localMin - 2) and (localMin != 1 and localMin != 0):
                         _thread.start_new_thread(FUNCTION_CLIENT.send_lark_msg_limit_one_min, (
-                        "localMin B:" + str(localMin) + ",klineMin:" + str(klineMin) + ",symbol:" + str(TRADE_SYMBOL_ARR[a]["symbol"]) + "," + str(
-                            LOCAL_ONE_MIN_KLINE_OBJ_ARR[a]),))
+                            "localMin B:" + str(localMin) + ",klineMin:" + str(klineMin) + ",symbol:" + str(TRADE_SYMBOL_ARR[a]["symbol"]) + "," + str(
+                                LOCAL_ONE_MIN_KLINE_OBJ_ARR[a]),))
                         ONE_MIN_KLINE_OBJ_ARR[a]["dataError"] = True
 
         priceStrArr = dataArr[1].split("~")
@@ -227,8 +224,8 @@ def getTickData():
                         ONE_MIN_KLINE_OBJ_ARR[a]["dataError"] = False
                     elif localMin < klineMin - 2 and (klineMin != 1 and klineMin != 0):
                         _thread.start_new_thread(FUNCTION_CLIENT.send_lark_msg_limit_one_min, (
-                        "localMin A:" + str(localMin) + ",klineMin:" + str(klineMin) + ",symbol:" + str(TRADE_SYMBOL_ARR[a]["symbol"]) + "," + str(
-                            LOCAL_ONE_MIN_KLINE_OBJ_ARR[a]),))
+                            "localMin A:" + str(localMin) + ",klineMin:" + str(klineMin) + ",symbol:" + str(TRADE_SYMBOL_ARR[a]["symbol"]) + "," + str(
+                                LOCAL_ONE_MIN_KLINE_OBJ_ARR[a]),))
                         ONE_MIN_KLINE_OBJ_ARR[a]["dataError"] = True
 
 
@@ -599,27 +596,28 @@ def newOpenOrders():
         FUNCTION_CLIENT.send_lark_msg_limit_one_min("allProfit<=-100:" + str(allProfit))
 
 
-getOneMinData()
-getTickData()
+if __name__ == '__main__':
+    getOneMinData()
+    getTickData()
 
-GET_ONE_MIN_DATA_TS = 0
+    GET_ONE_MIN_DATA_TS = 0
 
-print("begin")
+    print("begin")
 
-while 1:
-    now = int(time.time() * 1000)
-    try:
-        if now - GET_ONE_MIN_DATA_TS > 60 * 1000:
-            GET_ONE_MIN_DATA_TS = now
-            getOneMinData()
-        getTickData()
-        if UPDATE_DATA_STR:
-            UPDATE_DATA_STR = False
-            newOpenOrders()
-        RUN_TIME = RUN_TIME + 1
-    except Exception as e:
-        ex = traceback.format_exc()
-        FUNCTION_CLIENT.send_lark_msg_limit_one_min(str(ex))
-        print(e)
-        print(ex)
-        time.sleep(1)
+    while 1:
+        now = int(time.time() * 1000)
+        try:
+            if now - GET_ONE_MIN_DATA_TS > 60 * 1000:
+                GET_ONE_MIN_DATA_TS = now
+                getOneMinData()
+            getTickData()
+            if UPDATE_DATA_STR:
+                UPDATE_DATA_STR = False
+                newOpenOrders()
+            RUN_TIME = RUN_TIME + 1
+        except Exception as e:
+            ex = traceback.format_exc()
+            FUNCTION_CLIENT.send_lark_msg_limit_one_min(str(ex))
+            print(e)
+            print(ex)
+            time.sleep(1)

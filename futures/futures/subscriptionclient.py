@@ -1,8 +1,8 @@
-from binance_f.constant.system import WebSocketDefine
-from binance_f.impl.websocketconnection import WebsocketConnection
-from binance_f.impl.websocketrequestimpl import WebsocketRequestImpl
-from binance_f.impl.websocketwatchdog import WebSocketWatchDog
-from binance_f.model.constant import *
+from .constant.system import WebSocketDefine
+from .impl.websocketconnection import WebsocketConnection
+from .impl.websocketrequestimpl import WebsocketRequestImpl
+from .impl.websocketwatchdog import WebSocketWatchDog
+from .model.constant import *
 
 
 # For develop

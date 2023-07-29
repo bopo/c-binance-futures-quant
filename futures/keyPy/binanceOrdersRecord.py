@@ -1,17 +1,14 @@
-#!/usr/bin/python3.10
-# -*- coding: utf-8 -*-
-# encoding: utf-8
 # 客户端调用，用于查看API返回结果
 import json
 import time
 
 import requests
 
-from binance_f.requestclient import RequestClient
-from commonFunction import FunctionClient
-from config import *
+from ..futures.requestclient import RequestClient
+from ..commonFunction import FunctionClient
+from ..config import settings
 
-PUBLIC_SERVER_IP = "http://" + WEB_ADDRESS + ":8888/"
+PUBLIC_SERVER_IP = "http://" + settings.WEB_ADDRESS + ":8888/"
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="ordersRecord", connectMysql=True)
 
@@ -27,8 +24,10 @@ ORDERS_TABLE_NAME = "binance_orders"
 
 tableName = ORDERS_TABLE_NAME
 tableExit = False
+
 sql = "show tables;"
 tableData = FUNCTION_CLIENT.mysql_select(sql, [])
+
 for a in range(len(tableData)):
     if tableData[a][0] == tableName:
         tableExit = True

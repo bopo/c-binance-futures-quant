@@ -12,10 +12,10 @@ import requests
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest
 
-from binance_f.model.constant import *
-from binance_f.requestclient import RequestClient
-from commonFunction import FunctionClient
-from config import *
+from ..futures.model.constant import *
+from ..futures.requestclient import RequestClient
+from ..commonFunction import FunctionClient
+from ..config import settings
 
 ORDER_ID_SYMBOL = "t"
 
@@ -38,8 +38,8 @@ SERVER_IP_ARR = []
 nowPage = 1
 emptyReq = False
 while not emptyReq:
-    client = AcsClient(ALIYUN_API_KEY, ALIYUN_API_SECRET, ALIYUN_POINT)
-    client.add_endpoint(ALIYUN_POINT, 'Ecs', "ecs." + ALIYUN_POINT + ".aliyuncs.com")
+    client = AcsClient(settings.ALIYUN_API_KEY, settings.ALIYUN_API_SECRET, settings.ALIYUN_POINT)
+    client.add_endpoint(settings.ALIYUN_POINT, 'Ecs', "ecs." + settings.ALIYUN_POINT + ".aliyuncs.com")
     request = DescribeInstancesRequest()
     request.set_PageNumber(nowPage)
     request.set_PageSize(100)

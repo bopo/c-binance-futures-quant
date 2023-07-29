@@ -1,5 +1,3 @@
-#!/usr/bin/python3.10
-# coding=utf-8
 import _thread
 import datetime
 import decimal
@@ -13,10 +11,10 @@ import traceback
 import requests
 from bottle import run, post, request, response
 
-from binance_f.base.printobject import *
-from binance_f.model.constant import *
-from binance_f.requestclient import RequestClient
-from commonFunction import FunctionClient
+from .futures.base.printobject import *
+from .futures.model.constant import *
+from .futures.requestclient import RequestClient
+from .commonFunction import FunctionClient
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="webServer", connectMysqlPool=True)
 
@@ -3369,11 +3367,6 @@ def end_open():
     return resp
 
 
-# @post('/get_trades_result_arr', methods='POST')
-# def get_trades_result_arr():
-
-
-# print("-------0------------------")
 def main():
     run(server='paste', host='0.0.0.0', port=8888)
 

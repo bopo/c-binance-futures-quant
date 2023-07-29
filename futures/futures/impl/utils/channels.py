@@ -1,6 +1,6 @@
 import json
 
-from binance_f.impl.utils.timeservice import get_current_timestamp
+from futures.futures.impl.utils.timeservice import get_current_timestamp
 
 
 def aggregate_trade_channel(symbol):

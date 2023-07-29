@@ -6,12 +6,12 @@ import time
 
 import requests
 
-from commonFunction import FunctionClient
-from config import *
+from ..commonFunction import FunctionClient
+from ..config import settings
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="useData")
 
-PUBLIC_SERVER_IP = "http://" + WEB_ADDRESS + ":8888/"
+PUBLIC_SERVER_IP = "http://" + settings.WEB_ADDRESS + ":8888/"
 
 LAST_DATA_UPDATE_TS = 0
 
@@ -96,8 +96,8 @@ def getTickData():
                         ONE_MIN_KLINE_OBJ_ARR[a]["dataError"] = False
                     elif (klineMin < localMin - 2) and (localMin != 1 and localMin != 0):
                         _thread.start_new_thread(FUNCTION_CLIENT.send_lark_msg_limit_one_min, (
-                        "localMin B:" + str(localMin) + ",klineMin:" + str(klineMin) + ",symbol:" + str(TRADE_SYMBOL_ARR[a]["symbol"]) + "," + str(
-                            LOCAL_ONE_MIN_KLINE_OBJ_ARR[a]),))
+                            "localMin B:" + str(localMin) + ",klineMin:" + str(klineMin) + ",symbol:" + str(TRADE_SYMBOL_ARR[a]["symbol"]) + "," + str(
+                                LOCAL_ONE_MIN_KLINE_OBJ_ARR[a]),))
                         ONE_MIN_KLINE_OBJ_ARR[a]["dataError"] = True
 
         priceStrArr = dataArr[1].split("~")
@@ -172,8 +172,8 @@ def getTickData():
                         ONE_MIN_KLINE_OBJ_ARR[a]["dataError"] = False
                     elif localMin < klineMin - 2 and (klineMin != 1 and klineMin != 0):
                         _thread.start_new_thread(FUNCTION_CLIENT.send_lark_msg_limit_one_min, (
-                        "localMin A:" + str(localMin) + ",klineMin:" + str(klineMin) + ",symbol:" + str(TRADE_SYMBOL_ARR[a]["symbol"]) + "," + str(
-                            LOCAL_ONE_MIN_KLINE_OBJ_ARR[a]),))
+                            "localMin A:" + str(localMin) + ",klineMin:" + str(klineMin) + ",symbol:" + str(TRADE_SYMBOL_ARR[a]["symbol"]) + "," + str(
+                                LOCAL_ONE_MIN_KLINE_OBJ_ARR[a]),))
                         ONE_MIN_KLINE_OBJ_ARR[a]["dataError"] = True
 
 

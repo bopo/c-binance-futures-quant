@@ -3,8 +3,8 @@ import threading
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-from binance_f.impl.utils.timeservice import get_current_timestamp
-from binance_f.impl.websocketconnection import ConnectionState
+from futures.futures.impl.utils.timeservice import get_current_timestamp
+from futures.futures.impl.websocketconnection import ConnectionState
 
 
 def watch_dog_job(*args):

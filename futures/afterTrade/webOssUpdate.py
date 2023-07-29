@@ -6,10 +6,10 @@ import random
 import time
 import traceback
 
-from commonFunction import FunctionClient
-from config import *
+from ..commonFunction import FunctionClient
+from ..config import settings
 
-PUBLIC_SERVER_IP = "http://" + WEB_ADDRESS + ":8888/"
+PUBLIC_SERVER_IP = "http://" + settings.WEB_ADDRESS + ":8888/"
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="dataToOss", connectMysql=True)
 

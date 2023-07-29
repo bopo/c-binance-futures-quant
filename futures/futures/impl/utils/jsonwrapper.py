@@ -1,4 +1,4 @@
-from binance_f.exception.binanceapiexception import BinanceApiException
+from futures.futures.exception.binanceapiexception import BinanceApiException
 
 
 class JsonWrapper:

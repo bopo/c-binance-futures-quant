@@ -6,8 +6,8 @@ import traceback
 
 import requests
 
-from commonFunction import FunctionClient
-from config import *
+from ..commonFunction import FunctionClient
+from ..config import settings
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="recordOrders", connectMysql=True)
 
@@ -48,7 +48,7 @@ if not tableExit:
 
     FUNCTION_CLIENT.mysql_commit(sql, [])
 
-PUBLIC_SERVER_IP = "http://" + WEB_ADDRESS + ":8888/"
+PUBLIC_SERVER_IP = "http://" + settings.WEB_ADDRESS + ":8888/"
 
 response = requests.request("POST", PUBLIC_SERVER_IP + "get_symbol_index", timeout=3).json()
 

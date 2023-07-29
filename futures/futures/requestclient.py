@@ -1,7 +1,7 @@
-from binance_f.constant.system import RestApiDefine
-from binance_f.impl.restapiinvoker import call_sync
-from binance_f.impl.restapirequestimpl import RestApiRequestImpl
-from binance_f.model.constant import *
+from .constant.system import RestApiDefine
+from .impl.restapiinvoker import call_sync
+from .impl.restapirequestimpl import RestApiRequestImpl
+from .model.constant import *
 
 
 class RequestClient(object):

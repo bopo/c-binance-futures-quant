@@ -5,7 +5,7 @@ import json
 
 import requests
 
-from commonFunction import FunctionClient
+from ..commonFunction import FunctionClient
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="updateTradeSymbol", connectMysql=True)
 

@@ -2,7 +2,7 @@ import datetime
 import hashlib
 import hmac
 
-from binance_f.exception.binanceapiexception import BinanceApiException
+from futures.futures.exception.binanceapiexception import BinanceApiException
 
 
 def create_signature(secret_key, extraUrl):

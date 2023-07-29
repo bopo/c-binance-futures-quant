@@ -9,8 +9,8 @@ import traceback
 
 import requests
 
-from binance_f.requestclient import RequestClient
-from commonFunction import FunctionClient
+from ..futures.requestclient import RequestClient
+from ..commonFunction import FunctionClient
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="getBinancePosition", connectMysql=True)
 

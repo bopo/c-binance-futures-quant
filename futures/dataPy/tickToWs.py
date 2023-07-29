@@ -4,7 +4,7 @@ import time
 
 import requests
 
-from commonFunction import FunctionClient
+from ..commonFunction import FunctionClient
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="tickToWs", connectMysql=True)
 

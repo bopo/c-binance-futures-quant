@@ -90,16 +90,20 @@ class AccountInformation:
 
         element_list = list()
         data_list = json_data.get_array("assets")
+
         for item in data_list.get_items():
             element = Asset.json_parse(item)
             element_list.append(element)
+
         result.assets = element_list
 
         element_list = list()
         data_list = json_data.get_array("positions")
+
         for item in data_list.get_items():
             element = Position.json_parse(item)
             element_list.append(element)
+
         result.positions = element_list
 
         return result

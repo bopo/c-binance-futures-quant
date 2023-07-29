@@ -1,7 +1,6 @@
-from binance_f.impl.websocketrequest import WebsocketRequest
-from binance_f.impl.utils.inputchecker import *
-from binance_f.impl.websocketrequest import WebsocketRequest
-from binance_f.model import *
+from futures.futures.impl.utils.inputchecker import *
+from futures.futures.impl.websocketrequest import WebsocketRequest
+from futures.futures.model import *
 
 
 # For develop
@@ -290,12 +289,14 @@ class WebsocketRequestImpl(object):
         def json_parse(json_wrapper):
             print("event type: ", json_wrapper.get_string("e"))
             print(json_wrapper)
-            if (json_wrapper.get_string("e") == "ACCOUNT_UPDATE"):
+
+            if json_wrapper.get_string("e") == "ACCOUNT_UPDATE":
                 result = AccountUpdate.json_parse(json_wrapper)
-            elif (json_wrapper.get_string("e") == "ORDER_TRADE_UPDATE"):
+            elif json_wrapper.get_string("e") == "ORDER_TRADE_UPDATE":
                 result = OrderUpdate.json_parse(json_wrapper)
-            elif (json_wrapper.get_string("e") == "listenKeyExpired"):
+            elif json_wrapper.get_string("e") == "listenKeyExpired":
                 result = ListenKeyExpired.json_parse(json_wrapper)
+
             return result
 
         request = WebsocketRequest()

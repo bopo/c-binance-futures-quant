@@ -8,8 +8,8 @@ import traceback
 import requests
 import websocket
 
-from binance_f.requestclient import RequestClient
-from commonFunction import FunctionClient
+from ..futures.requestclient import RequestClient
+from ..commonFunction import FunctionClient
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="wsPosition", connectMysql=True)
 

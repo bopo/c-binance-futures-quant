@@ -1,7 +1,7 @@
 import re
 import time
 
-from binance_f.exception.binanceapiexception import BinanceApiException
+from futures.futures.exception.binanceapiexception import BinanceApiException
 
 reg_ex = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\t"
 

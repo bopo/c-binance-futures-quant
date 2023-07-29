@@ -6,7 +6,7 @@ import traceback
 
 import requests
 
-from commonFunction import FunctionClient
+from ..commonFunction import FunctionClient
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="oneMinKlineToWs", connectMysql=True)
 

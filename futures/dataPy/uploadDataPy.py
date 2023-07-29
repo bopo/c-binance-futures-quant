@@ -5,7 +5,7 @@ import time
 
 import paramiko
 
-from commonFunction import FunctionClient
+from ..commonFunction import FunctionClient
 
 FUNCTION_CLIENT = FunctionClient(larkMsgSymbol="uploadDataPy")
 

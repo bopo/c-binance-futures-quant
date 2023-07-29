@@ -16,4 +16,4 @@ class PrintDate:
 if __name__ == "__main__":
     ping_ts = 1569319465421
     PrintDate.timestamp_to_date(ping_ts)
-    PrintDate.timestamp_to_date(int(ping_ts), ("ping " + str(ping_ts)))
+    PrintDate.timestamp_to_date(int(ping_ts))

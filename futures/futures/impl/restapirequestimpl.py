@@ -1,11 +1,11 @@
 # For develop
-from binance_f.base.printobject import *
-from binance_f.impl import RestApiRequest
-from binance_f.impl.utils.apisignature import create_signature
-from binance_f.impl.utils.inputchecker import *
-from binance_f.impl.utils.timeservice import *
-from binance_f.impl.utils.urlparamsbuilder import UrlParamsBuilder
-from binance_f.model import *
+from futures.futures.base.printobject import *
+from futures.futures.impl import RestApiRequest
+from futures.futures.impl.utils.apisignature import create_signature
+from futures.futures.impl.utils.inputchecker import *
+from futures.futures.impl.utils.timeservice import *
+from futures.futures.impl.utils.urlparamsbuilder import UrlParamsBuilder
+from futures.futures.model import *
 
 
 class RestApiRequestImpl(object):
@@ -364,7 +364,6 @@ class RestApiRequestImpl(object):
         return request
 
     def get_position_mode(self):
-
         request = self.__create_request_by_get_with_signature("/fapi/v1/positionSide/dual", builder)
 
         def parse(json_wrapper):
