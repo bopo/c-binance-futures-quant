@@ -1,10 +1,10 @@
 'use strict';
 
 
-function _classCallCheck(instance, Constructor) { 
-    if (!(instance instanceof Constructor)) 
-    { throw new TypeError("Cannot call a class as a function"); 
-    } 
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor))
+    { throw new TypeError("Cannot call a class as a function");
+    }
 }
 
 var socket = function () {
@@ -63,7 +63,7 @@ var socket = function () {
     }
   };
 
-  socket.prototype.send = function send(data) {    
+  socket.prototype.send = function send(data) {
     if(this.socket.readyState != 1){
       console.log('readyState',this.socket.readyState)
       setTimeout(function(){
@@ -72,7 +72,7 @@ var socket = function () {
     }else{
       this.socket.send(JSON.stringify(data));
     }
-    
+
   };
 
   socket.prototype.emit = function emit(data) {

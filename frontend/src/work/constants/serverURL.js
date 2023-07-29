@@ -8,4 +8,3 @@ export const websocketURL = ["ws://websockete.zuibite.com:6454","ws://websocketb
 export const avatarUrl = "https://tripcat.oss-cn-beijing.aliyuncs.com/avatar/";
 export const photoUrl = "https://tripcat.oss-cn-beijing.aliyuncs.com/photo/";
 export const futureIPArr =['http://future_a.zuibite.vip','http://future_b.zuibite.vip','http://future_c.zuibite.vip','http://future_d.zuibite.vip','http://future_e.zuibite.vip','http://future_f.zuibite.vip','http://future_g.zuibite.vip','http://future_h.zuibite.vip','http://future_i.zuibite.vip','http://future_j.zuibite.vip']
-

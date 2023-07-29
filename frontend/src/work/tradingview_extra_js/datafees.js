@@ -44,7 +44,7 @@ var datafeeds = function () {
 
   /**
    * @param {*String} symbolName  商品名称或ticker
-   * @param {*Function} onSymbolResolvedCallback 成功回调 
+   * @param {*Function} onSymbolResolvedCallback 成功回调
    * @param {*Function} onResolveErrorCallback   失败回调
    * `resolveSymbol` should return result asynchronously.
    */
@@ -86,7 +86,7 @@ var datafeeds = function () {
                 }
                  LastLength = data.length;
 
- 
+
 
 //或者可以这样写： data && data.length ? onDataCallback(data, { noData: true }) : onDataCallback([], { noData: true });
     };
@@ -97,7 +97,7 @@ var datafeeds = function () {
    * 订阅K线数据。图表库将调用onRealtimeCallback方法以更新实时数据
    * @param {*Object} symbolInfo 商品信息
    * @param {*String} resolution 分辨率
-   * @param {*Function} onRealtimeCallback 回调函数 
+   * @param {*Function} onRealtimeCallback 回调函数
    * @param {*String} subscriberUID 监听的唯一标识符
    * @param {*Function} onResetCacheNeededCallback (从1.7开始): 将在bars数据发生变化时执行
    */
@@ -150,7 +150,7 @@ var datafeeds = function () {
       //设置周期
       'session': '24x7',
       'has_intraday': true,
-      'has_no_volume': false,  
+      'has_no_volume': false,
        //设置是否支持周月线
        "has_daily":true,
        //设置是否支持周月线

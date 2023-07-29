@@ -29,4 +29,3 @@ export let title = 'react_home'
 export let dns = ['www.baidu.com', 'www.qq.com']
 //api接口的数组
 export let api = env_fun("/list","","/");
-
