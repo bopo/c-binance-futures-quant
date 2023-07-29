@@ -1,4 +1,0 @@
-build/*.js
-config/*.js
-/webpack.config.babel.js
-/webpack.dll.config.js
